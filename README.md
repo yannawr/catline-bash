@@ -28,7 +28,7 @@ You can then delete the repository directory if you prefer.
 
 ## Commands
 
-To display usage information, run catline with the `-h` or `--help` option:
+To display usage information, run catline with the `-h` or `-help` option:
 ```bash
 catline -h
 ```
