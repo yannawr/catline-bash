@@ -6,7 +6,7 @@
 #   \___\__,_|\__|_|_|_| |_|\___|
 #
 # catline
-# Version: 1.0.0
+# Version: 1.1.0
 # Creation: 2023-10-27
 # Author: yannawr
 # Repository: github.com/yannawr/catline
@@ -67,40 +67,17 @@ catline_uninstall() {
 }
 
 count_lines() {
-    for file in "$directory"/*; do
+    for file in "$directory"/$extension; do
         if [ -f "$file" ]; then
             filename="${file##*/}"
-            ext="${filename##*.}"
-            if [[ -z "$extension_list" || " ${extension_list[@]} " =~ " $ext " ]]; then
-                if [[ -z "$excluded_extensions" || ! " ${excluded_extensions[@]} " =~ " $ext " ]]; then
-                    lines=$(wc -l < "$file")
-                    printf "%-5s %s\n" "$lines" "$filename"
-                fi
+            file_ext="${filename##*.}"
+
+            if [[ ! "$excluded_exts[@]" =~ "$file_ext" ]]; then
+                lines=$(wc -l < "$file")
+                printf "%-12s %s\n" "$lines" "$filename"
             fi
         fi
     done
-}
-
-check_command() {
-    if [ "$#" -eq 1 ]; then
-        case "$1" in
-            -i | -install)
-                catline_install
-                exit 0
-                ;;
-            -u | -uninstall)
-                catline_uninstall
-                exit 0
-                ;;
-            -h | -help)
-                show_help
-                exit 0
-                ;;
-        esac
-    else
-        echo "Error: Invalid usage of $1"
-        exit 1
-    fi
 }
 
 if [ "$#" -eq 1 ]; then
@@ -146,6 +123,7 @@ else
 fi
 
 if [ -n "$extension_list" ]; then
+
     IFS=',' read -ra extensions <<< "$extension_list"
     for ext in "${extensions[@]}"; do
         extension="*.$ext"
@@ -153,6 +131,7 @@ if [ -n "$extension_list" ]; then
     done
     exit 0
 elif [ -n "$excluded_extensions" ]; then
+    extension="*"
     IFS=',' read -ra excluded_exts <<< "$excluded_extensions"
     count_lines
     exit 0
