@@ -1,4 +1,4 @@
-# catline
+# catline (bash)
 
 ## Description
 
@@ -7,7 +7,7 @@ You can choose which file extensions you want the script to read or exclude the 
 
 This script was inspired by OFJAAH videos.
 
-You can check the version written in Go version [here](https://github.com/yannawr/catline)
+You can check the version written in Go [here](https://github.com/yannawr/catline)
 
 ## Requirements:
 
