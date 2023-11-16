@@ -7,7 +7,7 @@ You can choose which file extensions you want the script to read or exclude the 
 
 This script was inspired by OFJAAH videos.
 
-You can check the version written in Go [here](https://github.com/yannawr/catline)
+You can check the version written in Go version [here](https://github.com/yannawr/catline)
 
 ## Requirements:
 
@@ -19,7 +19,7 @@ None, really. But remember if running as portable, ensure this script has execut
 
 git clone this repository:
 ```
-git clone https://github.com/yannawr/catline-bash && cd catline && sudo chmod +x ./catline.sh
+git clone https://github.com/yannawr/catline-bash && cd catline-bash && sudo chmod +x ./catline.sh
 ```
 No installation is necessary, but if you find it more convenient, you can use the following command:
 
